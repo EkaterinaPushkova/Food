@@ -8,7 +8,7 @@ window.addEventListener('DOMContentLoaded', () => {   //constuction for correct 
             item.style.display = 'none';
          });
 
-         tabsContent.forEach(item => {
+         tabs.forEach(item => {
             item.classList.remove('tabheader__item_active');
          });
      }
@@ -18,9 +18,21 @@ window.addEventListener('DOMContentLoaded', () => {   //constuction for correct 
         tabs[i].classList.add('tabheader__item_active');
      }
 
-hideTabContent();
-showTabContent(1);
+    hideTabContent();
+    showTabContent(1);
 
+     tabParent.addEventListener('click', (event) => {
+        const tar = event.target;
+
+        if (tar && tar.classList.contains('tabheader__item')){
+            tabs.forEach((item, i) => {
+                if (tar == item){
+                    hideTabContent();
+                    showTabContent(i);
+                }
+            });
+        }
+     });
 
 });
 
